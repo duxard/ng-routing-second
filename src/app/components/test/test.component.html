@@ -1,0 +1,16 @@
+<p>test works!</p>
+
+
+<ul>
+  <li *ngFor="let option of options; index as i">
+    <ng-container
+      [ngTemplateOutlet]="tpl"
+      [ngTemplateOutletContext]="{ $implicit: option, idx: i }"
+    ></ng-container>
+  </li>
+</ul>
+
+<ng-template #tpl let-option let-position="idx">
+  <span>&#9827;</span> {{ position }} ----- {{option}}
+</ng-template>
+

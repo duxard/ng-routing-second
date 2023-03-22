@@ -1,10 +1,6 @@
-<nav>
-  <ul>
-    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/eager">Eager</a></li>
-    <li routerLinkActive="active"><a routerLink="/lazy">Lazy</a></li>
-  </ul>
-</nav>
 
-<app-standalone></app-standalone>
-
-<router-outlet></router-outlet>
+<app-test>
+  <span #child data-target="header">&#9827;</span>
+  <span #child>&#913;</span>
+  <span #child>&darr;</span>
+</app-test>
