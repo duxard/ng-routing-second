@@ -1,0 +1,7 @@
+<nav>
+  <ul class="navbar-main">
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/eager" >Eager</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/lazy']">Lazy</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['/standalone']">Standalone</a></li>
+  </ul>
+</nav>

@@ -1,7 +1,25 @@
 
-<app-test>
-  <span #child data-target="header">&#9827;</span>
-  <span #child>&#913;</span>
-  <span #child>&darr;</span>
-  <p #info>Lorem ipsum dolor.</p>
-</app-test>
+<!--<app-test>-->
+<!--  <span #child data-target="header">&#9827;</span>-->
+<!--  <span #child>&#913;</span>-->
+<!--  <span #child>&darr;</span>-->
+<!--  <p #info>Lorem ipsum dolor.</p>-->
+<!--</app-test>-->
+
+<div *ngFor="let o of options$ | async">{{o}}</div>
+
+<p *ngFor="let item of items$ | async">{{item}}</p>
+
+
+<div *ngIf="state$ | async; let state; else inactiveTemplate">
+  <p>Current state is: {{state}}</p>
+</div>
+
+<ng-template #inactiveTemplate>
+  <p>Inactive state</p>
+</ng-template>
+
+<app-view-model></app-view-model>
+
+<app-navigation></app-navigation>
+<router-outlet></router-outlet>
