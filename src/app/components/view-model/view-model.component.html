@@ -1,0 +1,9 @@
+<ng-container *ngIf="viewModel$ | async as viewModel">
+  <ul>
+    <li *ngFor="let fruit of viewModel.fruits">{{fruit}}</li>
+  </ul>
+  <hr>
+  <ul>
+    <li *ngFor="let vegetable of viewModel.vegetables">{{vegetable}}</li>
+  </ul>
+</ng-container>
