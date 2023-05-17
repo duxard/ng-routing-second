@@ -1,0 +1,8 @@
+<button (click)="tomatoes$.next('tomatoes')">Tomatoes</button>
+<button (click)="cheese$.next('cheese')">Cheese</button>
+<button (click)="cucumber$.next('cucumber')">Cucumber</button>
+<button (click)="olives$.next('olives')">Olives</button>
+<button (click)="dressing$.next('dressing')">Dressing</button>
+
+<p>{{salad$|async}}</p>
+<button (click)="complete()">Complete</button>
