@@ -1,17 +1,6 @@
-<p>test works!</p>
+<p>Test start</p>
+  <ng-container #ngContainer></ng-container>
 
 
-<ul>
-  <li *ngFor="let option of options; index as i">
-    <ng-container
-      [ngTemplateOutlet]="tpl"
-      [ngTemplateOutletContext]="{ $implicit: option, idx: i }"
-    ></ng-container>
-  </li>
-</ul>
-<ng-content></ng-content>
-
-<ng-template #tpl let-option let-position="idx">
-  <span>&#9827;</span> {{ position }} ----- {{option}}
-</ng-template>
-
+  <ng-container [ngTemplateOutlet]="template"></ng-container>
+<p>Test end</p>
