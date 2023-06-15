@@ -33,7 +33,7 @@ export class ViewModelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // will update username in template dou to subject observable emission
+    // will update username in template due to subject observable emission
     setTimeout(() => {
       this.user$.next({name: 'John'})
     }, 2000)

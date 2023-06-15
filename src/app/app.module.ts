@@ -9,6 +9,9 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { ViewModelComponent } from './components/view-model/view-model.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
 import { RxZipComponent } from './components/rx-zip/rx-zip.component';
+import { CustomInputComponent } from './components/control-value-accessor/custom-input/custom-input.component';
+import { CustomInputTestingComponent } from './components/control-value-accessor/custom-input-testing/custom-input-testing.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,15 @@ import { RxZipComponent } from './components/rx-zip/rx-zip.component';
     NavigationComponent,
     ViewModelComponent,
     PlaygroundComponent,
-    RxZipComponent
+    RxZipComponent,
+    CustomInputComponent,
+    CustomInputTestingComponent
   ],
   imports: [
     BrowserModule,
     StandaloneModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
