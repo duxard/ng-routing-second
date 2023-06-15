@@ -1,7 +1,20 @@
-<app-test [template]="template"></app-test>
+<section>
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+  <hr>
+</section>
 
-<ng-template #tpl>
-  <p>template from parent component</p>
-</ng-template>
+<section>
+  <app-test [template]="template"></app-test>
 
-<app-custom-input-testing></app-custom-input-testing>
+  <ng-template #tpl>
+    <p>template from parent component</p>
+  </ng-template>
+  <hr>
+</section>
+
+
+<section>
+  <app-custom-input-testing></app-custom-input-testing>
+  <hr>
+</section>
