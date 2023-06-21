@@ -14,6 +14,7 @@ import { CustomInputTestingComponent } from './components/control-value-accessor
 import { FormsModule } from '@angular/forms';
 import { SimpleDirective } from './directives/simple.directive';
 import { DividerComponent } from './components/divider/divider.component';
+import {ParentalDirective, TaskBuilderComponent} from './components/task-builder/task-builder.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { DividerComponent } from './components/divider/divider.component';
     CustomInputComponent,
     CustomInputTestingComponent,
     SimpleDirective,
-    DividerComponent
+    DividerComponent,
+    ParentalDirective,
+    TaskBuilderComponent
   ],
   imports: [
     BrowserModule,
