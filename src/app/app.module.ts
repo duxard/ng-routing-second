@@ -11,7 +11,9 @@ import { PlaygroundComponent } from './components/playground/playground.componen
 import { RxZipComponent } from './components/rx-zip/rx-zip.component';
 import { CustomInputComponent } from './components/control-value-accessor/custom-input/custom-input.component';
 import { CustomInputTestingComponent } from './components/control-value-accessor/custom-input-testing/custom-input-testing.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { SimpleDirective } from './directives/simple.directive';
+import { DividerComponent } from './components/divider/divider.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {FormsModule} from '@angular/forms';
     PlaygroundComponent,
     RxZipComponent,
     CustomInputComponent,
-    CustomInputTestingComponent
+    CustomInputTestingComponent,
+    SimpleDirective,
+    DividerComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import {FormsModule} from '@angular/forms';
     FormsModule
   ],
   providers: [],
+  schemas:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

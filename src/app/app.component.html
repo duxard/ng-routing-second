@@ -1,20 +1,21 @@
-<section>
-  <app-navigation></app-navigation>
-  <router-outlet></router-outlet>
-  <hr>
-</section>
+<app-divider>
+  <p *appSimple>This is a simple structural directive</p>
+</app-divider>
 
-<section>
+<app-divider>
+  <router-outlet></router-outlet>
+</app-divider>
+
+
+<app-divider>
   <app-test [template]="template"></app-test>
 
   <ng-template #tpl>
     <p>template from parent component</p>
   </ng-template>
-  <hr>
-</section>
+</app-divider>
 
 
-<section>
+<app-divider>
   <app-custom-input-testing></app-custom-input-testing>
-  <hr>
-</section>
+</app-divider>
