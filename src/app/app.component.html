@@ -15,10 +15,17 @@
 
 
 <app-divider>
-  <app-test [template]="template"></app-test>
+  <app-test [template]="template" [templateWithContext]="templateWithCtx"></app-test>
 
   <ng-template #tpl>
     <p>template from parent component</p>
+  </ng-template>
+
+  <ng-template #templateWithCtx let-name="name" let-age="age" let-admin="admin">
+    <p>Template with context</p>
+    <span>{{name}} - </span>
+    <span>{{age}} - </span>
+    <span>{{admin}}</span>
   </ng-template>
 </app-divider>
 

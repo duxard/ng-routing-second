@@ -1,6 +1,17 @@
 <p>Test start</p>
   <ng-container #ngContainer></ng-container>
 
-
   <ng-container [ngTemplateOutlet]="template"></ng-container>
+
+  <ng-container *ngTemplateOutlet="templateWithContext; context: contextForTemplate"></ng-container>
+<!--or:-->
+<!--  <ng-container [ngTemplateOutlet]="templateWithContext" [ngTemplateOutletContext]="contextForTemplate"></ng-container>-->
+
+  <ng-container *ngTemplateOutlet="innerTemplate; context: {$implicit: 'Cosmos', surname: 'Doe'}"></ng-container>
+  <ng-template #innerTemplate let-name let-surname="surname">
+    <p>
+      <span>{{name}} </span> <span>{{surname}}</span>
+    </p>
+  </ng-template>
 <p>Test end</p>
+
