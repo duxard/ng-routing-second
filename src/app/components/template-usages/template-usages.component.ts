@@ -15,11 +15,11 @@ interface TemplateContextInterface {
 }
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  selector: 'app-template-usages',
+  templateUrl: './template-usages.component.html',
+  styleUrls: ['./template-usages.component.scss']
 })
-export class TestComponent implements AfterViewInit {
+export class TemplateUsagesComponent implements AfterViewInit {
   @ViewChild('ngContainer', {read: ViewContainerRef}) ngContainer!: ViewContainerRef;
   @Input() template!: TemplateRef<void>;
   @Input() templateWithContext!: TemplateRef<TemplateContextInterface>;

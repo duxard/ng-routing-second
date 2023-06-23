@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StandaloneModule } from './components/standalone/standalone.module';
-import { TestComponent } from './components/test/test.component';
+import { TemplateUsagesComponent } from './components/template-usages/template-usages.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { ViewModelComponent } from './components/view-model/view-model.component';
 import { PlaygroundComponent } from './components/playground/playground.component';
@@ -19,7 +19,7 @@ import {ParentalDirective, TaskBuilderComponent} from './components/task-builder
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
+    TemplateUsagesComponent,
     NavigationComponent,
     ViewModelComponent,
     PlaygroundComponent,
