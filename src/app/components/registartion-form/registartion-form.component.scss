@@ -1,0 +1,16 @@
+:host {
+  .field {
+    margin-bottom: 5px;
+  }
+  .invalid {
+    border: 1px solid red;
+  }
+  .validation {
+    small {
+      color: red;
+    }
+    &:empty {
+      display: none;
+    }
+  }
+}

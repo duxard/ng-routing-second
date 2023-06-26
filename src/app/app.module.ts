@@ -11,10 +11,11 @@ import { PlaygroundComponent } from './components/playground/playground.componen
 import { RxZipComponent } from './components/rx-zip/rx-zip.component';
 import { CustomInputComponent } from './components/control-value-accessor/custom-input/custom-input.component';
 import { CustomInputTestingComponent } from './components/control-value-accessor/custom-input-testing/custom-input-testing.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleDirective } from './directives/simple.directive';
 import { DividerComponent } from './components/divider/divider.component';
 import {ParentalDirective, TaskBuilderComponent} from './components/task-builder/task-builder.component';
+import { RegistartionFormComponent } from './components/registartion-form/registartion-form.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import {ParentalDirective, TaskBuilderComponent} from './components/task-builder
     SimpleDirective,
     DividerComponent,
     ParentalDirective,
-    TaskBuilderComponent
+    TaskBuilderComponent,
+    RegistartionFormComponent
   ],
   imports: [
     BrowserModule,
     StandaloneModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   schemas:[],

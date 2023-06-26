@@ -1,0 +1,38 @@
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label>username</label>
+    <input type="text" formControlName="username" [class.invalid]="isInputValid('username')">
+    <div class="validation" *ngIf="isInputValid('username')">
+      <small *ngIf="registrationForm.get('username')?.errors?.required">
+        Field cannot be empty
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label>password</label>
+    <input type="password" formControlName="password" [class.invalid]="isInputValid('password')">
+    <div class="validation"  *ngIf="isInputValid('password')">
+      <small *ngIf="registrationForm.get('password')?.errors?.required">
+        Field cannot be empty
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label>email</label>
+    <input type="email" formControlName="email" [class.invalid]="isInputValid('email')">
+    <div class="validation"  *ngIf="isInputValid('email')">
+      <small *ngIf="registrationForm.get('email')?.errors?.required">
+        Field cannot be empty
+      </small>
+      <small *ngIf="registrationForm.get('email')?.errors?.email">
+        Enter correct email
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <select formControlName="roleId">
+      <option *ngFor="let role of roles" [ngValue]="role.id">{{role.title}}</option>
+    </select>
+  </div>
+  <button type="submit">Submit</button>
+</form>
