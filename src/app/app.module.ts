@@ -14,8 +14,9 @@ import { CustomInputTestingComponent } from './components/control-value-accessor
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SimpleDirective } from './directives/simple.directive';
 import { DividerComponent } from './components/divider/divider.component';
-import {ParentalDirective, TaskBuilderComponent} from './components/task-builder/task-builder.component';
+import { ParentalDirective, TaskBuilderComponent } from './components/task-builder/task-builder.component';
 import { RegistartionFormComponent } from './components/registartion-form/registartion-form.component';
+import { ZonePlayaroundComponent } from './components/zone-playaround/zone-playaround.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegistartionFormComponent } from './components/registartion-form/regist
     DividerComponent,
     ParentalDirective,
     TaskBuilderComponent,
-    RegistartionFormComponent
+    RegistartionFormComponent,
+    ZonePlayaroundComponent
   ],
   imports: [
     BrowserModule,
