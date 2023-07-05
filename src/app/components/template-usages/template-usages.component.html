@@ -15,3 +15,15 @@
   </ng-template>
 <p>Test end</p>
 
+<!--ngFor with template-->
+<!--<ng-container *ngFor="let number of data;let i = index;let isEven=even;template: tpl"></ng-container>-->
+<ng-container *ngFor="let user of users; index as i; even as isEven; template: tpl"></ng-container>
+
+<ng-template #tpl let-user let-isEven="even" let-i="index">
+  <p [class.even]="isEven">{{i}} : {{user.name}}</p>
+</ng-template>
+
+
+
+
+

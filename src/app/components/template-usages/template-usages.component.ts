@@ -1,11 +1,10 @@
 import {
-  AfterContentInit,
   AfterViewInit,
   Component,
-  ContentChild,
-  ContentChildren,
-  ElementRef, Input,
-  QueryList, TemplateRef, ViewChild, ViewContainerRef
+  Input,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
 
 interface TemplateContextInterface {
@@ -29,6 +28,11 @@ export class TemplateUsagesComponent implements AfterViewInit {
     age: 100,
     admin: true
   };
+
+  users: Array<{name: string; age: number}> = [
+    { name: 'John', age: 100 },
+    { name: 'Doe', age: 100 },
+  ];
 
   ngAfterViewInit(): void {
     this.ngContainer.createEmbeddedView(this.template);
