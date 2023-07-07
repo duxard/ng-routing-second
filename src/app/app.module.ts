@@ -12,11 +12,12 @@ import { RxZipComponent } from './components/rx-zip/rx-zip.component';
 import { CustomInputComponent } from './components/control-value-accessor/custom-input/custom-input.component';
 import { CustomInputTestingComponent } from './components/control-value-accessor/custom-input-testing/custom-input-testing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SimpleDirective } from './directives/simple.directive';
+import { SimpleDirective } from './directives/structural/simple.directive';
 import { DividerComponent } from './components/divider/divider.component';
 import { ParentalDirective, TaskBuilderComponent } from './components/task-builder/task-builder.component';
 import { RegistartionFormComponent } from './components/registartion-form/registartion-form.component';
 import { ZonePlayaroundComponent } from './components/zone-playaround/zone-playaround.component';
+import { MultipleInputParamsDirective } from './directives/structural/multiple-input-params.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ZonePlayaroundComponent } from './components/zone-playaround/zone-playa
     ParentalDirective,
     TaskBuilderComponent,
     RegistartionFormComponent,
-    ZonePlayaroundComponent
+    ZonePlayaroundComponent,
+    MultipleInputParamsDirective
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,16 @@
 
 <app-divider>
   <p *appSimple>This is a simple structural directive</p>
+  <p
+    *mip="true; param: 'Some text'; template: tplForDirective; templateCtx: {info: 'Some info', id: 1} "
+  >This is a complex structural directive with multiple inputs</p>
+  <ng-template #tplForDirective let-info="info" let-id="id">
+    <p>
+      <span>MultipleInputParamsDirective directive template;</span>
+      <span>{{info}}</span>
+      <span>{{id}}</span>
+    </p>
+  </ng-template>
 </app-divider>
 
 <app-divider>

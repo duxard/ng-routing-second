@@ -2,7 +2,6 @@ import {
   Directive,
   ElementRef,
   EmbeddedViewRef,
-  Input,
   OnDestroy,
   OnInit,
   TemplateRef,
