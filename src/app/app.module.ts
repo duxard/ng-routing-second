@@ -18,6 +18,7 @@ import { ParentalDirective, TaskBuilderComponent } from './components/task-build
 import { RegistartionFormComponent } from './components/registartion-form/registartion-form.component';
 import { ZonePlayaroundComponent } from './components/zone-playaround/zone-playaround.component';
 import { MultipleInputParamsDirective } from './directives/structural/multiple-input-params.directive';
+import { IfDefinedDirective } from './directives/structural/if-defined.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MultipleInputParamsDirective } from './directives/structural/multiple-i
     TaskBuilderComponent,
     RegistartionFormComponent,
     ZonePlayaroundComponent,
-    MultipleInputParamsDirective
+    MultipleInputParamsDirective,
+    IfDefinedDirective
   ],
   imports: [
     BrowserModule,

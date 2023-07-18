@@ -14,7 +14,18 @@
 </app-divider>
 
 <app-divider>
+  <section *ifDefined="'' as tplInputText; otherwise thenTpl; let tplContextPropOne = contextPropOne">
+    <div>Input text: {{tplInputText}} </div>
+    <div>Context prop one: {{tplContextPropOne}} </div>
+  </section>
+  <ng-template #thenTpl let-default let-tplContextPropOne="contextPropOne">
+    <p>placeholder</p>
+    <div>Context prop one: {{tplContextPropOne}} </div>
+    <div>Implicit: {{default}}</div>
+  </ng-template>
+
   <p *appSimple>This is a simple structural directive</p>
+
   <p
     *mip="true; param: 'Some text'; template: tplForDirective; templateCtx: {info: 'Some info', id: 1} "
   >This is a complex structural directive with multiple inputs</p>
