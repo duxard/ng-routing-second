@@ -19,6 +19,10 @@ import { RegistartionFormComponent } from './components/registartion-form/regist
 import { ZonePlayaroundComponent } from './components/zone-playaround/zone-playaround.component';
 import { MultipleInputParamsDirective } from './directives/structural/multiple-input-params.directive';
 import { IfDefinedDirective } from './directives/structural/if-defined.directive';
+import { UsersResolverComponent } from './components/users-resolver/users-resolver.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './components/users-resolver/user-details/user-details.component';
+import { UserSpinnerComponent } from './components/users-resolver/user-spinner/user-spinner.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +41,18 @@ import { IfDefinedDirective } from './directives/structural/if-defined.directive
     RegistartionFormComponent,
     ZonePlayaroundComponent,
     MultipleInputParamsDirective,
-    IfDefinedDirective
+    IfDefinedDirective,
+    UsersResolverComponent,
+    UserDetailsComponent,
+    UserSpinnerComponent
   ],
   imports: [
     BrowserModule,
     StandaloneModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   schemas:[],

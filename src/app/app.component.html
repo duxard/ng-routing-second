@@ -1,4 +1,9 @@
 <app-divider>
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
+</app-divider>
+
+<app-divider>
   <app-zone-playaround></app-zone-playaround>
 </app-divider>
 
@@ -37,11 +42,6 @@
     </p>
   </ng-template>
 </app-divider>
-
-<app-divider>
-  <router-outlet></router-outlet>
-</app-divider>
-
 
 <app-divider>
   <app-template-usages [template]="template" [templateWithContext]="templateWithCtx"></app-template-usages>
