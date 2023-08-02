@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription, interval } from 'rxjs';
 import { debounceTime, debounce } from 'rxjs/operators';
 
@@ -11,7 +11,7 @@ import { debounceTime, debounce } from 'rxjs/operators';
 export class RegistartionFormComponent implements OnInit, OnDestroy {
   private subscriber$!: Subscription;
 
-  registrationForm: FormGroup = this.fb.group({
+  registrationForm: UntypedFormGroup = this.fb.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
@@ -22,7 +22,7 @@ export class RegistartionFormComponent implements OnInit, OnDestroy {
     { id: 2, title: 'qa' }
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     this.subscriber$ = this.registrationForm.valueChanges.pipe(
