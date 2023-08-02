@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -16,6 +16,5 @@ import { Author } from './book-auth.service';
   `,
 })
 export class BookFirstComponent  {
-  author$: Observable<Author> = this.activatedRoute.data.pipe(map(({author}) => author));
-  constructor(private activatedRoute: ActivatedRoute) {}
+  author$: Observable<Author> = inject(ActivatedRoute).data.pipe(map(({author}) => author));
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
 import { EagerComponent } from './components/eager/eager.component';
 import { StandaloneComponent } from './components/standalone/standalone.component';
@@ -7,10 +7,10 @@ import { UserDetailsComponent } from './components/users-resolver/user-details/u
 import { UserResolver } from './components/users-resolver/resolvers/user.resolver';
 import { BookFirstComponent } from './components/books/book-first.component';
 import { BookSecondComponent } from './components/books/book-second.component';
-import { BookGuard } from './components/books/book-guard.service';
 import { AuthorResolver } from './components/books/author-resolver.service';
 import { BookCanLoadGuard } from './components/books/book-can-load.guard';
 import { AuthPreloadStrategy } from './components/books/auth-preload-strategy';
+import { BookAuthService } from './components/books/book-auth.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'eager', pathMatch: 'full' },
@@ -21,7 +21,11 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailsComponent, resolve: {user: UserResolver} },
   {
     path: '',
-    canActivate: [BookGuard],
+    // old style:
+    // canActivate: [BookGuard]
+    canActivate: [
+      () => inject(BookAuthService).isAuthenticated$
+    ],
     resolve: {
       author: AuthorResolver
     },
