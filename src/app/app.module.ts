@@ -23,6 +23,8 @@ import { UsersResolverComponent } from './components/users-resolver/users-resolv
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './components/users-resolver/user-details/user-details.component';
 import { UserSpinnerComponent } from './components/users-resolver/user-spinner/user-spinner.component';
+import { BookFirstComponent } from './components/books/book-first.component';
+import { BookSecondComponent } from './components/books/book-second.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { UserSpinnerComponent } from './components/users-resolver/user-spinner/u
     IfDefinedDirective,
     UsersResolverComponent,
     UserDetailsComponent,
-    UserSpinnerComponent
+    UserSpinnerComponent,
+    BookFirstComponent,
+    BookSecondComponent
   ],
   imports: [
     BrowserModule,

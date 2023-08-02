@@ -5,6 +5,12 @@ import { StandaloneComponent } from './components/standalone/standalone.componen
 import { UsersResolverComponent } from './components/users-resolver/users-resolver.component';
 import { UserDetailsComponent } from './components/users-resolver/user-details/user-details.component';
 import { UserResolver } from './components/users-resolver/resolvers/user.resolver';
+import { BookFirstComponent } from './components/books/book-first.component';
+import { BookSecondComponent } from './components/books/book-second.component';
+import { BookGuard } from './components/books/book-guard.service';
+import { AuthorResolver } from './components/books/author-resolver.service';
+import { BookCanLoadGuard } from './components/books/book-can-load.guard';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'eager', pathMatch: 'full' },
@@ -12,7 +18,22 @@ const routes: Routes = [
   { path: 'lazy', loadChildren: () => import('./components/lazy/lazy.module').then(m => m.LazyModule) },
   { path: 'standalone', component: StandaloneComponent },
   { path: 'users', component: UsersResolverComponent },
-  { path: 'users/:id', component: UserDetailsComponent, resolve: {user: UserResolver} }
+  { path: 'users/:id', component: UserDetailsComponent, resolve: {user: UserResolver} },
+  {
+    path: '',
+    canActivate: [BookGuard],
+    resolve: {
+      author: AuthorResolver
+    },
+    children: [
+      { path: 'book-first', component: BookFirstComponent },
+      { path: 'book-second', component: BookSecondComponent },
+      {
+        path: 'book-third',
+        canLoad: [BookCanLoadGuard],
+        loadChildren: () => import('./components/books/book-third-lazy/book-third-lazy.module').then(m => m.BookThirdLazyModule) },
+    ]
+  }
 ];
 
 @NgModule({
