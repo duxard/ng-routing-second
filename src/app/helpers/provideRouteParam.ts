@@ -27,7 +27,7 @@ function isNonNull<T>(val: T): val is NonNullable<T> {
 /**
  *  Usage:
  *
- *  const USER_ID = new InjectionToken<Observable<string>>('USER_ID');
+ *  const USER_ID = new InjectionToken<Observable<string>>('USER_ID', { factory: () => EMPTY });
  *
  *  providers: [provideRouteParam(USER_ID, 'userId')]
  *

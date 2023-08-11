@@ -11,6 +11,7 @@ import { AuthorResolver } from './components/books/author-resolver.service';
 import { BookCanLoadGuard } from './components/books/book-can-load.guard';
 import { AuthPreloadStrategy } from './components/books/auth-preload-strategy';
 import { BookAuthService } from './components/books/book-auth.service';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'eager', pathMatch: 'full' },
@@ -45,7 +46,8 @@ const routes: Routes = [
           preload: true
         },
         loadChildren: () => import('./components/books/book-fourth-lazy/book-fourth-lazy.module').then(m => m.BookFourthLazyModule)
-      }
+      },
+      { path: '**', component: PageNotFoundComponent }
     ]
   }
 ];
