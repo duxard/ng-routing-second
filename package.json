@@ -8,7 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "compile": "ngc -p tsconfig.json",
-    "compile-prod": "env NG_BUILD_MANGLE=false NG_BUILD_MINIFY=false NG_BUILD_BEAUTIFY=true ng build --prod"
+    "compile-prod": "env NG_BUILD_MANGLE=false NG_BUILD_MINIFY=false NG_BUILD_BEAUTIFY=true ng build --prod",
+    "storybook": "ng run ng-routing-second:storybook",
+    "build-storybook": "ng run ng-routing-second:build-storybook"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +31,14 @@
     "@angular-devkit/build-angular": "^14.2.12",
     "@angular/cli": "^14.2.12",
     "@angular/compiler-cli": "^14.3.0",
+    "@compodoc/compodoc": "^1.1.21",
+    "@storybook/addon-docs": "^7.3.2",
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-interactions": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
+    "@storybook/angular": "^7.3.2",
+    "@storybook/blocks": "^7.3.2",
+    "@storybook/testing-library": "^0.2.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~4.0.0",
@@ -37,6 +47,9 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.3.2",
     "typescript": "~4.8.4"
   }
 }
