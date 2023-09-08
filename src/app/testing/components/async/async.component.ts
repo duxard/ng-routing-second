@@ -4,7 +4,7 @@ import { timer } from 'rxjs';
 @Component({
   selector: 'app-async',
   styles: [],
-  templateUrl: ``,
+  templateUrl: `async.component`,
 })
 export class AsyncComponent {
   timerComplete = false;
