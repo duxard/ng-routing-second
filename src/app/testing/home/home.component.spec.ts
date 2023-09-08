@@ -2,8 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { of } from 'rxjs';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -40,8 +41,28 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should create', () => {
+  it('check component title', () => {
     expect(component.title).toEqual('home component');
+  });
+
+  it('spyOn - 1', () => {
+    spyOn(component, 'getNumber');
+    component.ngOnInit();
+    expect(component.getNumber).toHaveBeenCalled();
+  });
+
+  it('spyOn - 2', () => {
+    spyOn(component, 'getNumber').and.returnValue(2000);
+    const result = component.getNumber();
+    expect(result).toEqual(2000);
+  });
+
+  it('spyOn - 3', () => {
+    spyOn(component, 'fetchResult').and.callFake(() => of(100));
+    // incResult() will not have any effect because it's stubbed
+    spyOn(component, 'incResult').and.stub();
+    component.saveResult();
+    expect(component.result).toEqual(100);
   });
 
   it('service check 1', () => {
