@@ -1,10 +1,12 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, flushMicrotasks, TestBed, tick } from '@angular/core/testing';
 
 import { AsyncComponent } from './async.component';
+import { EMPTY, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 /*
-flush() API only flush non-periodic macroTasks such as setTimeout()
-tick()  API only flush non-periodic AND periodic macroTasks such as setInterval()
+flush() API only flushes non-periodic macroTasks such as setTimeout()
+tick()  API flushes both - non-periodic (e.g. setInterval) as well as periodic macroTasks such as setInterval()
  */
 
 describe('AsyncComponent', () => {
@@ -47,5 +49,42 @@ describe('AsyncComponent', () => {
     component.startTimer();
     tick(1000);
     expect(component.timerComplete).toBeTrue();
+  }));
+
+  it('Promise', fakeAsync(() => {
+    let counter = 0;
+
+    setTimeout(() => {
+      counter += 2;
+    }, 2000);
+
+    setTimeout(() => {
+      counter += 3;
+    }, 3000);
+
+    Promise.resolve().then(() => ++counter); // microtask - is executed before macrotasks (setTimeout)
+    flushMicrotasks();
+    expect(counter).toBe(1);
+
+    tick(2000);
+    expect(counter).toBe(3);
+
+    tick(3000);
+    expect(counter).toBe(6);
+  }));
+
+  it('Synchronous observable', () => {
+    let isSubscribed = false;
+    of(EMPTY).subscribe(() => isSubscribed = true);
+    expect(isSubscribed).toBeTrue();
+  });
+
+  it('Asynchronous observable', fakeAsync(() => {
+    const DELAY = 1000;
+
+    let isSubscribed = false;
+    of(EMPTY).pipe(delay(DELAY)).subscribe(() => isSubscribed = true);
+    tick(DELAY);
+    expect(isSubscribed).toBeTrue();
   }));
 });

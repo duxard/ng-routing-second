@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, inject, TestBed} from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
 import { HomeService } from './home.service';
@@ -40,6 +40,15 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('DI check 1', () => {
+    expect(service instanceof HomeService).toBeTruthy();
+  });
+
+  it('DI check 2', inject([HomeService], (hs: HomeService) => {
+    expect(hs).toBeTruthy();
+    expect(hs instanceof HomeService).toBeTrue();
+  }));
 
   it('check component title', () => {
     expect(component.title).toEqual('home component');
@@ -107,5 +116,46 @@ describe('HomeComponent', () => {
     const paragraphNE: HTMLElement = componentDE.nativeElement;
     const p: HTMLParagraphElement | null = paragraphNE.querySelector('.section-one');
     expect(p!.textContent).toEqual('Section one');
+  });
+
+  it('input one event', () => {
+    const inputOne = fixture.debugElement.nativeElement.querySelector('#inputOne');
+    const label = fixture.debugElement.nativeElement.querySelector('#label');
+    inputOne.dispatchEvent(new Event('input'));
+    expect(component.label).toEqual('label - inputOne')
+
+    fixture.detectChanges();
+    expect(label.textContent).toEqual('label - inputOne')
+  });
+
+  it('input two event', () => {
+    const inputTwo = fixture.debugElement.nativeElement.querySelector('#inputTwo');
+    inputTwo.value = 'inputTwo text';
+    inputTwo.dispatchEvent(new Event('input'));
+    expect(component.label).toEqual('inputTwo text')
+  });
+
+
+  it('emit event by btn click 1', () => {
+    const inputTwo = fixture.debugElement.nativeElement.querySelector('#btn');
+    const emitterSpy = spyOn(component.textEmitter, 'emit');
+    inputTwo.click();
+    expect(emitterSpy).toHaveBeenCalledWith('emitted text')
+  });
+
+  it('emit event by btn click 2', () => {
+    const inputTwo = fixture.debugElement.query(By.css('#btn'));
+    const emitterSpy = spyOn(component.textEmitter, 'emit');
+    inputTwo.triggerEventHandler('click', null);
+    // OR #1: inputTwo.nativeElement.dispatchEvent(new Event('click'));
+    // OR #2: inputTwo.nativeElement.click();
+    expect(emitterSpy).toHaveBeenCalledWith('emitted text')
+  });
+
+  it('spyOn and withArgs()', () => {
+    // withArgs always goes in pair with returnValue()
+    spyOn(component, 'sum').withArgs(1, 2).and.returnValue(10);
+    const res = component.sum(1,2); // should be the same as in withArgs()
+    expect(res).toBe(10);
   });
 });
