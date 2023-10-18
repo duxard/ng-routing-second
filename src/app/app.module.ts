@@ -25,6 +25,8 @@ import { UserDetailsComponent } from './components/users-resolver/user-details/u
 import { UserSpinnerComponent } from './components/users-resolver/user-spinner/user-spinner.component';
 import { BookFirstComponent } from './components/books/book-first.component';
 import { BookSecondComponent } from './components/books/book-second.component';
+import { TreeComponent } from './components/injection-tokens-usage/tree/tree.component';
+import { TreeBranchComponent } from './components/injection-tokens-usage/tree-branch/tree-branch.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { BookSecondComponent } from './components/books/book-second.component';
     UserDetailsComponent,
     UserSpinnerComponent,
     BookFirstComponent,
-    BookSecondComponent
+    BookSecondComponent,
+    TreeComponent,
+    TreeBranchComponent
   ],
   imports: [
     BrowserModule,
