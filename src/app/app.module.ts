@@ -27,6 +27,9 @@ import { BookFirstComponent } from './components/books/book-first.component';
 import { BookSecondComponent } from './components/books/book-second.component';
 import { TreeComponent } from './components/injection-tokens-usage/tree/tree.component';
 import { TreeBranchComponent } from './components/injection-tokens-usage/tree-branch/tree-branch.component';
+import { PainterDirective } from './components/painter_self_provider/painter.directive';
+import { BluePainterDirective } from './components/painter_self_provider/blue-painter.directive';
+import { GreenPainterDirective } from './components/painter_self_provider/green-painter.directive';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { TreeBranchComponent } from './components/injection-tokens-usage/tree-br
     BookFirstComponent,
     BookSecondComponent,
     TreeComponent,
-    TreeBranchComponent
+    TreeBranchComponent,
+    PainterDirective,
+    BluePainterDirective,
+    GreenPainterDirective
   ],
   imports: [
     BrowserModule,
