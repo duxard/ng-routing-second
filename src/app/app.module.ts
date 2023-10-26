@@ -30,6 +30,7 @@ import { TreeBranchComponent } from './components/injection-tokens-usage/tree-br
 import { PainterDirective } from './components/painter_self_provider/painter.directive';
 import { BluePainterDirective } from './components/painter_self_provider/blue-painter.directive';
 import { GreenPainterDirective } from './components/painter_self_provider/green-painter.directive';
+import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { GreenPainterDirective } from './components/painter_self_provider/green-
     TreeBranchComponent,
     PainterDirective,
     BluePainterDirective,
-    GreenPainterDirective
+    GreenPainterDirective,
+    RxjsZoneComponent
   ],
   imports: [
     BrowserModule,
