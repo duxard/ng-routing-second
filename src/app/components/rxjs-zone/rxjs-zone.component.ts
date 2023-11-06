@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 import { filter, tap} from 'rxjs/operators';
-import { timer, pipe, MonoTypeOperatorFunction, Observable } from 'rxjs';
+import { timer, pipe, MonoTypeOperatorFunction, Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-rxjs-zone',
@@ -49,4 +49,15 @@ export function zoneOptimized<T>(ngZone: NgZone): MonoTypeOperatorFunction<T> {
     zonefree(ngZone),
     zonefull(ngZone)
   );
+}
+
+function runInZone<T>(zone: NgZone): MonoTypeOperatorFunction<T> {
+  return (source: Observable<T>) => {
+    return new Observable((observer: Subscriber<T>) => {
+      const onNext = (value: T) => zone.run(() => observer.next(value));
+      const onError = (e: unknown) => zone.run(() => observer.error(e));
+      const onComplete = () => zone.run(() => observer.complete());
+      return source.subscribe(onNext, onError, onComplete);
+    });
+  };
 }

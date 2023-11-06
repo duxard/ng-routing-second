@@ -31,6 +31,7 @@ import { PainterDirective } from './components/painter_self_provider/painter.dir
 import { BluePainterDirective } from './components/painter_self_provider/blue-painter.directive';
 import { GreenPainterDirective } from './components/painter_self_provider/green-painter.directive';
 import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
+import { VirtualInfiniteScrollComponent } from './cdk/virtual-infinite-scroll/virtual-infinite-scroll.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
     BluePainterDirective,
     GreenPainterDirective,
     RxjsZoneComponent
+
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,10 @@ import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    // standalone components
+    VirtualInfiniteScrollComponent
   ],
   providers: [],
   schemas:[],

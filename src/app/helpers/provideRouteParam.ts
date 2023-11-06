@@ -2,6 +2,7 @@ import { inject, InjectionToken, Provider} from '@angular/core';
 import { Observable, EMPTY, map, filter } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { distinctUntilChanged } from 'rxjs/operators';
+import {isNonNull} from './is-non-null';
 
 export function provideRouteParam(token: InjectionToken<Observable<string>>, name: string): Provider {
   return {
@@ -18,10 +19,6 @@ export function provideRouteParam(token: InjectionToken<Observable<string>>, nam
       );
     }
   }
-}
-
-function isNonNull<T>(val: T): val is NonNullable<T> {
-  return val != null;
 }
 
 /**
