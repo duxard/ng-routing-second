@@ -34,4 +34,8 @@ export class IfDefinedDirective implements OnInit {
       this.viewRef.clear();
     }
   }
+
+  static ngTemplateContextGuard(dir: IfDefinedDirective, ctx: unknown): ctx is IfDefinedDirectiveContext {
+    return true;
+  }
 }

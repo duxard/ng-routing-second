@@ -19,7 +19,7 @@
 </app-divider>
 
 <app-divider>
-  <section *ifDefined="'' as tplInputText; otherwise thenTpl; let tplContextPropOne = contextPropOne">
+  <section *ifDefined="'lorem ipsum' as tplInputText; otherwise thenTpl; let tplContextPropOne = contextPropOne">
     <div>Input text: {{tplInputText}} </div>
     <div>Context prop one: {{tplContextPropOne}} </div>
   </section>
