@@ -1,5 +1,6 @@
 import { TestScheduler } from 'rxjs/testing'
-import { delay, from, map, Observable, of, take, timer, concatMap } from "rxjs";
+import { delay, from, map, Observable, of, take, timer, concatMap,combineLatest } from "rxjs";
+import {} from 'rxjs/operators';
 
 function myFunction1(x: string): Observable<string> {
   return of(x).pipe(
@@ -100,6 +101,36 @@ describe('Test suite', () => {
     };
     scheduler.run(({ expectObservable }) => {
       expectObservable(res$).toBe(expectedMarbles, expectedValues);
+    });
+  });
+
+  it('example 5', () => {
+    scheduler.run(({ expectObservable, cold }) => {
+      const first = cold('x|');
+      const second = cold('y|');
+      const res = combineLatest([first, second]);
+      expectObservable(res).toBe('a|', { a: ['x', 'y'] });
+    });
+  });
+
+  it('example 6', () => {
+    scheduler.run(({ expectObservable, cold }) => {
+      const first = cold('x|').pipe(map(() => true));
+      const second = cold('y|');
+      const res = combineLatest([first, second]);
+      expectObservable(res).toBe('a|', { a: [true, 'y'] });
+    });
+  });
+
+  it('example 7', () => {
+    scheduler.run(({ expectObservable, cold }) => {
+      const first = cold('x|').pipe(
+        map(() => true),
+        delay(5)
+      );
+      const second = cold('y|');
+      const res = combineLatest([first, second]);
+      expectObservable(res).toBe('-----(a|)', { a: [true, 'y'] });
     });
   });
 });
