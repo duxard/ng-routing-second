@@ -25,6 +25,10 @@
     "@angular/platform-browser-dynamic": "^14.3.0",
     "@angular/router": "^14.3.0",
     "@ngneat/until-destroy": "^10.0.0-beta.0",
+    "angular-i18next": "~14.0.0",
+    "i18next": "^21.10.0",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-xhr-backend": "^3.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

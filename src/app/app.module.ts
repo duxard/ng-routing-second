@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StandaloneModule } from './components/standalone/standalone.module';
@@ -32,6 +31,9 @@ import { BluePainterDirective } from './components/painter_self_provider/blue-pa
 import { GreenPainterDirective } from './components/painter_self_provider/green-painter.directive';
 import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
 import { VirtualInfiniteScrollComponent } from './cdk/virtual-infinite-scroll/virtual-infinite-scroll.component';
+import { I18NextModule } from 'angular-i18next';
+import { I18N_PROVIDERS } from './i18n/i18n.service';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,6 @@ import { VirtualInfiniteScrollComponent } from './cdk/virtual-infinite-scroll/vi
     BluePainterDirective,
     GreenPainterDirective,
     RxjsZoneComponent
-
   ],
   imports: [
     BrowserModule,
@@ -71,11 +72,12 @@ import { VirtualInfiniteScrollComponent } from './cdk/virtual-infinite-scroll/vi
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    I18NextModule.forRoot(),
 
     // standalone components
-    VirtualInfiniteScrollComponent
+    VirtualInfiniteScrollComponent,
   ],
-  providers: [],
+  providers: [I18N_PROVIDERS],
   schemas:[],
   bootstrap: [AppComponent]
 })
