@@ -1,0 +1,3 @@
+1) Both components should provide themselves in Providers
+2) Classes should implement token interfaces
+3) Tokens should reside in a separate (from components) files
