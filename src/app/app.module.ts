@@ -33,6 +33,7 @@ import { RxjsZoneComponent } from './components/rxjs-zone/rxjs-zone.component';
 import { VirtualInfiniteScrollComponent } from './cdk/virtual-infinite-scroll/virtual-infinite-scroll.component';
 import { I18NextModule } from 'angular-i18next';
 import { I18N_PROVIDERS } from './i18n/i18n.service';
+import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { I18N_PROVIDERS } from './i18n/i18n.service';
     PainterDirective,
     BluePainterDirective,
     GreenPainterDirective,
-    RxjsZoneComponent
+    RxjsZoneComponent,
+    LanguageSwitchComponent
   ],
   imports: [
     BrowserModule,
