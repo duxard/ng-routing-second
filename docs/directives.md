@@ -105,3 +105,101 @@ export class HtmlWrapperDirective implements OnInit {
   }
 }
 ```
+
+## Example of attribute directive and it's application which shows how the directive can be applied. It just paints the host element and provides some public API to apply, wraps each inner component inside <span>
+
+````
+
+@Directive({
+  selector: '[appNuiButton]',
+  exportAs: 'appNuiButton',
+  standalone: true
+})
+export class NuiButtonDirective implements OnInit, AfterViewInit {
+  @HostBinding('class')
+  get className(): Record<string, boolean> {
+    return {
+      'nui-button': true,
+      [`nui-button--blue`]: true
+    };
+  }
+
+  @HostListener('mouseenter') onMouseEnter(): void {
+    console.log('Mouse entered');
+  }
+
+  @HostListener('mouseleave') onMouseLeave(): void {
+    console.log('Mouse left');
+  }
+
+  constructor(
+    private readonly viewContainerRef: ViewContainerRef,
+    private readonly elementRef: ElementRef<HTMLElement>,
+    private readonly renderer: Renderer2
+
+  ) { }
+
+  ngOnInit(): void {
+    // do the same stuff - apply the styles to "style" attr of the component this directive is applied to
+    this.viewContainerRef.element.nativeElement.style.borderColor = 'red';
+    this.elementRef.nativeElement.style.color = 'green';
+  }
+
+  logMessage(): void {
+    console.log('Button directive clicked');
+  }
+
+  ngAfterViewInit(): void {
+    this.elementRef.nativeElement.childNodes.forEach((node) => {
+      if (node.nodeName !== '#text') {
+        return;
+      }
+      const span = this.renderer.createElement('span');
+      const parent = this.renderer.parentNode(node);
+      this.renderer.insertBefore(parent, span, node);
+      this.renderer.appendChild(span, node);
+    });
+  }
+}
+-------------------------------------------------------------------------
+usage:
+
+<button
+  appNuiButton
+  #anchor="appNuiButton"
+  (click)="anchor.logMessage()"
+>Test</button>
+````
+
+## Example of attribute directive with inputs & outputs applied to some component:
+
+````
+@Directive({
+  selector: '[appExtraColumn]',
+  exportAs: 'appExtraColumn',
+})
+export class ExtraColumnDirective implements OnInit {
+  @Input() columnName?: string;
+
+  @HostListener('click', ['$event']) onClick(event: MouseEvent) {
+    this.extraColumnClick.emit('Extra column clicked');
+  }
+
+  @Output() extraColumnClick = new EventEmitter<string>();
+
+  constructor(private readonly testGridComponent: TestGridComponent) { }
+
+  ngOnInit(): void {
+
+    let name = 'extra';
+    if(this.columnName) {
+      name = this.columnName;
+    }
+    this.testGridComponent.columns.push(name);
+  }
+
+  messageFromDirective(): void {
+    console.log('Message from directive');
+  }
+}
+````

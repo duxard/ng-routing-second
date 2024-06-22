@@ -35,3 +35,15 @@ function getUsersWithIds2(data: User[]): UserWithId[] {
     }, []);
 }
 ```
+
+## Type represents one of the array values
+
+````
+export const SELECT_OPERATORS = [
+    EOperator.Is,
+    EOperator.IsNot,
+    EOperator.IsPresent,
+    EOperator.IsNotPresent,
+] as const;
+export type TSelectOperator = (typeof SELECT_OPERATORS)[number];
+````
