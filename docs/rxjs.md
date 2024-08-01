@@ -27,3 +27,36 @@ A cold observable starts producing data when some code invokes a subscribe() fun
 A hot observable produces data even if no subscribers are interested in the data. For example, an accelerometer in your smartphone produces data about the position of your device, even if no app subscribes to this data. A server can produce the latest stock prices even if no user is interested in this stock.
 
 
+## share & shareReplay
+
+1) refCount: false - after both subscribers unsubscribe:  the source observable will keep emitting values (see console log)
+2) refCount: true - after both subscribers unsubscribe:  the source observable will stop emitting values (see console log)
+
+```
+const obs$ = timer(0, 1000).pipe(
+   tap(console.log),
+   shareReplay({
+     bufferSize: 1,
+     refCount: false
+   })
+ );
+ 
+ // First subscription
+ const s1 = obs$.subscribe(data => console.log('First: ', data));
+ let s2: Subscription | null = null;
+ setTimeout(() => {
+   // Second subscription after 2 seconds
+   s2 = obs$.subscribe(data => console.log('Second: ', data));
+ }, 2000);
+
+onStop() {
+  s1.unsubscribe();
+  s2!.unsubscribe();
+  // this.obs$.subscribe(data => console.log('Second: ', data));
+}
+
+onStart() {
+  obs$.subscribe(data => console.log(data))
+}
+```
+
