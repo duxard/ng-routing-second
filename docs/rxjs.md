@@ -60,3 +60,26 @@ onStart() {
 }
 ```
 
+## refresh$$ example
+```
+@Input() readonly = false;
+
+private readonly refresh$$ = new Subject<void>();
+
+readonly isModifyEnabled$ = combineLatest([
+    ...,
+    this.refresh$$.pipe(startWith(null))
+]).pipe(
+   ...
+);
+
+ngOnChanges({ readonly }: SimpleChanges): void {
+    if(readonly) {
+        this.refresh$$.next();
+    }
+}
+
+// Somewhere in template:
+<ng-container *ngIf="isModifyEnabled$ | async"></ng-container>
+```
+
